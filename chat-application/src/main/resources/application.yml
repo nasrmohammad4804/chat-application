@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: MohammadN@sr13804804
+    url: jdbc:postgresql://localhost:5432/chatapp
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+private-sign-key: Oh18dosXQRX7HWE7DEO0uA==
