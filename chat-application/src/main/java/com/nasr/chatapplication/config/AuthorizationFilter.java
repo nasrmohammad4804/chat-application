@@ -26,7 +26,7 @@ public class AuthorizationFilter extends OncePerRequestFilter {
     @Autowired
     private JwtUtils jwtUtils;
     private final List<String> shouldNotFilterPath = List.of(
-            "/api/login", "/verification"
+            "/api/login", "/verification","/refresh-token"
     );
 
     @Override

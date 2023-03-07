@@ -22,12 +22,15 @@ public class SecurityConfig {
 
     @Autowired
     private AuthorizationFilter authorizationFilter;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests().requestMatchers(OPTIONS).permitAll();
+        http.authorizeHttpRequests().requestMatchers("/refresh-token").permitAll();
+
         http.authorizeHttpRequests()
-                        .anyRequest().authenticated();
+                .anyRequest().authenticated();
 
         http.sessionManagement().sessionCreationPolicy(STATELESS);
 
@@ -38,7 +41,7 @@ public class SecurityConfig {
 
         http.addFilterAt(beforeOTPFilter, UsernamePasswordAuthenticationFilter.class);
         http.addFilterBefore(OTPFilter, BeforeOTPAuthenticationFilter.class);
-        http.addFilterBefore(authorizationFilter,OTPAuthenticationFilter.class);
+        http.addFilterBefore(authorizationFilter, OTPAuthenticationFilter.class);
         return http.build();
     }
 }
